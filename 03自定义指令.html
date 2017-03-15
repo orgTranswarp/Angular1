@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+</head>
+<body ng-app="myApp">
+<!---1.元素名调用--->
+<runoob-directive></runoob-directive>
+
+<!---2.属性调用--->
+<div runoob-directive></div>
+
+<!---3.类名调用--->
+<div class="className-directive"></div>
+<p><strong>注意：</strong> 你必须设置 <b>restrict</b> 的值为 "C" 才能通过类名来调用指令。</p>
+
+<!---4.注释调用--->
+<!-- directive: ownDifined-directive -->
+<p><strong>注意：</strong> 我们需要在该实例添加 <strong>replace</strong> 属性， 否则评论是不可见的。</p>
+<p><strong>注意：</strong> 你必须设置 <b>restrict</b> 的值为 "M" 才能通过注释来调用指令。</p>
+
+<p>
+限制使用
+你可以限制你的指令只能通过特定的方式来调用。
+</p>
+<p>
+    restrict 值可以是以下几种:
+    E 作为元素名使用
+    A 作为属性使用
+    C 作为类名使用
+    M 作为注释使用
+</p>
+<script>
+var app = angular.module("myApp", []);
+app.directive("runoobDirective", function() {
+    return {
+        template : "<h1>自定义指令!</h1>"
+    };
+});
+
+app.directive("classNameDirective", function() {
+    return {
+        restrict : "C",
+        template : "<h1>自定义指令!</h1>"
+    };
+});
+
+app.directive("ownDifinedDirective", function() {
+    return {
+        restrict : "M",
+        replace : true,
+        template : "<h1>自定义指令!</h1>"
+    };
+});
+
+var app = angular.module("myApp", []);
+app.directive("restrictDirective", function() {
+    return {
+        restrict : "A",
+        template : "<h1>自定义指令!</h1>"
+    };
+});
+</script>
+</body>
+</html>
