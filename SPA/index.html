@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="https://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+</head>
+<body ng-app="myNoteApp" ng-controller="myNoteCtrl">
+
+<h2>笔记: SPA example</h2>
+
+<textarea ng-model="message" cols="40" rows="10"></textarea>
+
+<p>
+<button ng-click="save()">保存</button>
+<button ng-click="clear()">清除</button>
+</p>
+
+<p>剩余字数:<br />
+    <span ng-bind="left()"></span>
+    <span >{{left()}}</span>
+</p>
+
+<hr />
+<div ng-controller="myTestCtrl">
+	<span>{{test}}</span>
+</div>
+
+<script src="./script/myNoteApp.js"></script>
+<script src="./script/myNoteCtrl.js"></script>
+
+<p>
+	AngularJS 在 HTML DOMContentLoaded 事件中自动开始。 如果找到 ng-app 指令 ， AngularJS 载入指令中的模块，并将 ng-app 作为应用的根进行编译。 
+</p>
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="https://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+</head>
+<body>
+<p>
+    <a href="http://www.runoob.com/angularjs/angularjs-select.html">website</a>
+</p>
+<div ng-app="myApp" ng-controller="myCtrl">
+    <p>
+        <select ng-model="selectedSite">
+            <option ng-repeat="x in sites" value="{{x.url}}">{{x.site}}</option>
+        </select>
+
+        <h1>你选择的是: {{selectedSite}}</h1>
+    </p>
+    <p>
+        <p>当选择值是一个对象时，我们就可以获取更多信息，应用也更灵活。</p>
+
+        <select ng-model="selectedSite" ng-options="x.site for x in sites"></select>
+
+        <h1>你选择的是: {{selectedSite.site}}</h1>
+        <p>网址为: {{selectedSite.url}}</p>
+    </p>
+
+    <div>
+        <p>选择的网站是:</p>
+        <select ng-model="selectedSite" ng-options="key for (key, value) in objects">
+        </select>
+        <h1>你选择的值是: {{selectedSite}} 为 value</h1>
+    </div>
+
+    <div>
+        <p>选择的是:</p>
+        <!--<select ng-model="selectedCar" ng-options="key for (key, value) in cars">-->
+        <select ng-model="selectedCar" ng-options="value.brand for (key, value) in cars">
+        </select>
+        <h1>你选择的是: {{selectedCar.brand}}</h1>
+        <h2>模型: {{selectedCar.model}}</h2>
+        <h3>颜色: {{selectedCar.color}}</h3>
+
+    </div>
+
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    $scope.sites = [
+        {site : "Google", url : "http://www.google.com"},
+        {site : "Runoob", url : "http://www.runoob.com"},
+        {site : "Taobao", url : "http://www.taobao.com"}
+    ];
+
+    $scope.objects = {
+	    site01 : "Google",
+	    site02 : "Runoob",
+	    site03 : "Taobao"
+	};
+
+	$scope.cars = {
+        car01 : {brand : "Ford", model : "Mustang", color : "red"},
+        car02 : {brand : "Fiat", model : "500", color : "white"},
+        car03 : {brand : "Volvo", model : "XC90", color : "black"}
+    }
+});
+</script>
+</body>
+</html>

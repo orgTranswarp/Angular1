@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="https://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+</head>
+<body>
+<p>
+    什么时候载入库?
+
+
+    Note
+    在我们的实例中，所有 AngularJS 库都在 HTML 文档的头部载入。
+
+    对于 HTML 应用程序，通常建议把所有的脚本都放置在 <body> 元素的最底部。
+
+这会提高网页加载速度，因为 HTML 加载不受制于脚本加载。
+
+在我们的多个 AngularJS 实例中，您将看到 AngularJS 库是在文档的 <head> 区域被加载。
+
+    在我们的实例中，AngularJS 在 <head> 元素中被加载，因为对 angular.module 的调用只能在库加载完成后才能进行。
+
+        另一个解决方案是在 <body> 元素中加载 AngularJS 库，但是必须放置在您的 AngularJS 脚本前面：
+
+
+</p>
+<div ng-app="myApp" ng-controller="myCtrl">
+    {{ firstName + " " + lastName }}
+</div>
+
+
+<!--在模块定义中 [] 参数用于定义模块的依赖关系。-->
+<!--中括号[]表示该模块没有依赖，如果有依赖的话会在中括号写上依赖的模块名字。-->
+<script>
+var app = angular.module("myApp", []);
+app.controller("myCtrl", function($scope) {
+    $scope.firstName = "John";
+    $scope.lastName = "Doe";
+});
+</script>
+
+<!--<script src="./scripts/myApp.js"></script>-->
+<!--<script src="./scripts/controller/myCtrl.js"></script>-->
+</body>
+</html>
