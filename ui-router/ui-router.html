@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+
+    <!--<script src="http://cdn.bootcss.com/angular-ui-router/1.0.0-rc.1/angular-ui-router.min.js"></script>-->
+    <script src="./angular-ui-router.min.js"></script>
+
+</head>
+<body >
+
+<div ng-app="myApp">
+    <div ui-view></div> <!-- 视图 -->
+</div>
+
+<p>訪問的URL</p>
+<p>http://localhost:63342/workspace/Angular1/ui-router/ui-router.html?_ijt=cmofo583djfsqn4nr0m44ql307#/</p>
+
+<script type="text/javascript">
+    //定义模板，并注入ui-router
+    var app = angular.module('myApp', ['ui.router']);
+    //对服务进行参数初始化，这里配stateProvider服务的视图控制
+    app.config(["$stateProvider",  function ($stateProvider) {
+        $stateProvider
+        .state("home", {
+            url: '/',
+            template:'<div>模板内容......</div>'
+        })
+    }]);
+</script>
+
+</body>
+
+</html>

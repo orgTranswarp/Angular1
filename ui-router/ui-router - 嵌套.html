@@ -1,0 +1,53 @@
+<!DOCTYPE
+        html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+
+    <!--<script src="http://cdn.bootcss.com/angular-ui-router/1.0.0-rc.1/angular-ui-router.min.js"></script>-->
+    <script src="./angular-ui-router.min.js"></script>
+
+</head>
+<body>
+<body >
+
+<div ng-app="myApp">
+    <!--1. -->
+    <a ui-sref="parent">点我显示父view内容</a>
+    <a ui-sref="parent.child">点我显示父view与子view内容</a>
+    <!--2. -->
+    <div ui-view></div> <!-- 父View -->
+</div>
+<div>
+    1.
+    ‘parent’将匹配…./index.html#/parent； ‘parent.child’将匹配…./index.html#/parent/child。
+</div>
+<script type="text/javascript">
+    var app = angular.module('myApp', ['ui.router']);
+    app.config(["$stateProvider",  function ($stateProvider) {
+        $stateProvider
+        .state("parent", {
+            //3. 父路由
+            //3.1
+            url: '/parent',
+            template:'<div>parent'
+                    +'<div ui-view><div>'//3.2 子View
+                    +'</div>'
+        })
+        //4. 子View
+        //4.1.1 相對路徑
+        .state("parent.child", {
+            //4.1.2
+            url: '/child',
+
+            //4.2.1 絕對路徑 若改成绝对路径方式，则需要在子url里加上^:
+            url: '^/child',
+            //4.2.2 此时，’parent’将匹配…./index.html#/parent； ‘parent.child’将匹配…./index.html#/child。
+            template:'<div>child</div>'
+        })
+    }]);
+
+  </script>
+</body>
+</html>

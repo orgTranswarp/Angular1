@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+
+    <!--<script src="http://cdn.bootcss.com/angular-ui-router/1.0.0-rc.1/angular-ui-router.min.js"></script>-->
+    <script src="./angular-ui-router.min.js"></script>
+
+</head>
+<body>
+
+<div ng-app="myApp" >
+    <a ui-sref="index">点我显示index内容</a>
+    <div ui-view="header"></div>
+    <div ui-view="nav"></div>
+    <div ui-view="body"></div>
+</div>
+</body>
+
+<script type="text/javascript">
+    var app = angular.module('myApp', ['ui.router']);
+    app.config(["$stateProvider",  function ($stateProvider) {
+        $stateProvider
+        .state("index", {
+            url: '/index',
+            views:{
+                'header':{template:"<div>头部内容</div>"},
+                'nav':{template:"<div>菜单内容</div>"},
+                'body':{template:"<div>展示内容</div>"}
+            }
+        })
+
+    }]);
+
+  </script>
+</body>
+</html>
